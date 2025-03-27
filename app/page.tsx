@@ -35,6 +35,7 @@ const Page = () => {
       setMessage(res.data.message);
      } catch (error) {
       setLoading(false);
+      console.log(error);
       setMessage("Internal Server Error");
      }
   }
