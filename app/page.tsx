@@ -1,7 +1,43 @@
 "use client"
-import React from "react";
+import React, { useEffect } from "react";
+import axios from "axios";
 
 const page = () => {
+  const [email, setEmail] = React.useState("");
+  const [loading, setLoading] = React.useState(false);
+  const [message, setMessage] = React.useState("");
+  const [isJoined, setIsJoined] = React.useState(false);
+  
+  useEffect(() => {
+    const localEmail = localStorage.getItem("email");
+    if (localEmail) {
+      setEmail(localEmail);
+      setIsJoined(true);
+    }
+  }, []);
+
+  const HandleSubmit = async () =>{
+     const localEmail = localStorage.getItem("email");
+     if(localEmail) return;
+     setLoading(true);
+     try {
+      const res = await axios.post("/api/waitlist", {email})
+      console.log(res);
+      
+      if(res.status === 409){
+        setMessage(res.data.message);
+        return;
+      }
+      if(res.status === 200){
+        localStorage.setItem("email", email);
+      }
+      setLoading(false);
+      setMessage(res.data.message);
+     } catch (error) {
+      setLoading(false);
+      setMessage("Internal Server Error");
+     }
+  }
   return (
     <div className="h-screen w-full bg-[#F78E69] text-[#0D1321] relative overflow-hidden selection:bg-[#0D1321] selection:text-[#F78E69]">
 
@@ -33,11 +69,18 @@ const page = () => {
               type="text"
               placeholder="Enter your email"
               className="border border-[#0D1321] rounded-md h-10 w-[50%] "
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
-            <button className="bg-[#0D1321] text-[#F78E69] font-semibold text-lg w-[20%] h-10 rounded-md">
-              Join Waitlist
+            <div className="flex items-center gap-2">
+            <button className="bg-[#0D1321] text-[#F78E69] font-semibold text-lg w-[20%] h-10 rounded-md cursor-pointer" onClick={HandleSubmit}>
+              {loading ? "Adding..." : email && isJoined ? "Joined" : "Join Waitlist"}
             </button>
-          </div>
+            {message && <p className="text-lg text-[#0D1321] font-bold antialiased tracking-wide opacity-90">{message}</p>}
+            {email && isJoined && <p className="text-lg text-[#0D1321] font-bold antialiased tracking-wide opacity-90">{email}</p>}
+            </div>
+
+          </div>  
         </div>
       </div>
 
