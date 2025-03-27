@@ -2,7 +2,7 @@
 import React, { useEffect } from "react";
 import axios from "axios";
 
-const page = () => {
+const Page = () => {
   const [email, setEmail] = React.useState("");
   const [loading, setLoading] = React.useState(false);
   const [message, setMessage] = React.useState("");
@@ -103,5 +103,5 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
 
