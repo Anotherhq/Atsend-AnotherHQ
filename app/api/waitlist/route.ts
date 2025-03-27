@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import prisma from "@/db/prisma";
+import { sendEmail } from "@/service/resend/sendEmail";
 
 export async function POST(req: Request) {
   try {
@@ -14,9 +15,20 @@ export async function POST(req: Request) {
       return NextResponse.json({ message: "Email already in waitlist" }, { status: 409 });
     }
 
-    await prisma.waitlist.create({
+    const result = await prisma.waitlist.create({
       data: { email },
+      select:{
+        email:true
+      }
     });
+
+    const firstName = result.email.split("@")[0];
+
+    const emailResult = await sendEmail(result.email, firstName);
+
+    if (!emailResult) {
+      return NextResponse.json({ message: "Failed to send email" }, { status: 500 });
+    }
 
     return NextResponse.json({ message: "Added to waitlist!" });
   } catch (error) {

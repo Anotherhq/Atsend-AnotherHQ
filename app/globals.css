@@ -70,3 +70,9 @@ input {
   outline: none;
 }
 
+@media screen and (max-width: 768px) {
+  .MAXWIDTH {
+    padding-left: 14px;
+    scale: 90%;
+  }  
+}

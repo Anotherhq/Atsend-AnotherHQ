@@ -17,15 +17,14 @@ const Page = () => {
   }, []);
 
   const HandleSubmit = async () =>{
-     const localEmail = localStorage.getItem("email");
-     if(localEmail) return;
+     if(isJoined || !email) return;
      setLoading(true);
      try {
       const res = await axios.post("/api/waitlist", {email})
       console.log(res);
       
-      if(res.status === 409){
-        setMessage(res.data.message);
+      if(res.status == 409){
+        setMessage("Email already in waitlist");
         return;
       }
       if(res.status === 200){
@@ -53,21 +52,22 @@ const Page = () => {
 
       <div className="MAXWIDTH items-start justify-center h-[calc(100vh-4rem)] flex flex-col gap-20">
         <div className="w-full flex items-start justify-center flex-col gap-4">
-          <p className="text-5xl font-bold antialiased tracking-wide opacity-90">
+          <p className="md:text-5xl text-3xl font-bold antialiased tracking-wide opacity-90">
             Your Newsletter Revolution is Almost Here
           </p>
-          <h1 className="text-7xl font-bold antialiased tracking-wide opacity-90">
+          <h1 className="md:text-7xl text-5xl font-bold antialiased tracking-wide opacity-90">
             COMING SOON
           </h1>
         </div>
 
         <div className="flex flex-col gap-4 w-full">
-          <p className="text-2xl font-bold antialiased tracking-wide opacity-90">
+          <p className="md:text-2xl text-lg font-bold antialiased tracking-wide opacity-90">
             Join the Waitlist – Be the First to Know!
           </p>
           <div className="flex flex-col gap-2 w-full">
             <input
               type="text"
+              disabled={isJoined} 
               placeholder="Enter your email"
               className="border border-[#0D1321] rounded-md h-10 w-[50%] "
               value={email}
@@ -78,14 +78,13 @@ const Page = () => {
               {loading ? "Adding..." : email && isJoined ? "Joined" : "Join Waitlist"}
             </button>
             {message && <p className="text-lg text-[#0D1321] font-bold antialiased tracking-wide opacity-90">{message}</p>}
-            {email && isJoined && <p className="text-lg text-[#0D1321] font-bold antialiased tracking-wide opacity-90">{email}</p>}
             </div>
 
           </div>  
         </div>
       </div>
 
-      <div className="absolute bottom-0 w-full h-24">
+      <div className="absolute bottom-0 w-full  h-24">
         <div className="MAXWIDTH flex items-center justify-start">
           <div className="flex items-center gap-2 underline">
             By{" "}
