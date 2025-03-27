@@ -69,12 +69,12 @@ const Page = () => {
               type="text"
               disabled={isJoined} 
               placeholder="Enter your email"
-              className="border border-[#0D1321] rounded-md h-10 w-[50%] "
+              className="border border-[#0D1321] rounded-md h-10 md:w-[50%] w-[85%] "
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
             <div className="flex items-center gap-2">
-            <button className="bg-[#0D1321] text-[#F78E69] font-semibold text-lg w-[20%] h-10 rounded-md cursor-pointer" onClick={HandleSubmit}>
+            <button className="bg-[#0D1321] text-[#F78E69] font-semibold text-lg md:w-[20%] w-[50%] h-10 rounded-md cursor-pointer" onClick={HandleSubmit}>
               {loading ? "Adding..." : email && isJoined ? "Joined" : "Join Waitlist"}
             </button>
             {message && <p className="text-lg text-[#0D1321] font-bold antialiased tracking-wide opacity-90">{message}</p>}
