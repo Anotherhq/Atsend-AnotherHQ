@@ -41,13 +41,19 @@
   --jasmine: #F4D06F;
   --floral-white: #FFF8F0;
   --space-cadet: #392F5A;
+  --persian-indigo: #27187E;
+  --cornflower-blue: #758BFD;
+  --periwinkle: #AEB8FE;
+  --antiflash-white: #F1F2F6;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+@theme {
+  --color-persian-indigo: #27187E;
+  --color-cornflower-blue: #758BFD;
+  --color-periwinkle: #AEB8FE;
+  --color-antiflash-white: #F1F2F6;
 }
+
 
 body {
   font-family: 'Bricolage Grotesque', sans-serif;
@@ -64,6 +70,7 @@ body {
   margin: 0 auto;
   display: flex;
 }
+
 
 input {
   padding: 0.5rem;

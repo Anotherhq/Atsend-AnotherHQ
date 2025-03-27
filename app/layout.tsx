@@ -13,9 +13,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "AtSend - Create and Share Newsletters in Seconds",
-  description: "AtSend - Create and Share Newsletters in Seconds",
-  keywords: ["AtSend", "Create and Share Newsletters", "Newsletters", "Marketing", "Creators", "Small Businesses"],
+  title: "Atsend - Create and Share Newsletters in Seconds",
+  description: "Atsend - Create and Share Newsletters in Seconds",
+  keywords: ["Atsend", "Create and Share Newsletters", "Newsletters", "Marketing", "Creators", "Small Businesses"],
 };
 
 export default function RootLayout({
