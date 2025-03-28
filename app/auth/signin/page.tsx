@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { authClient } from "@/lib/auth-client";
 import { FaGoogle } from "react-icons/fa";
 import { useRouter } from "next/navigation";
-import { handleSocialSignin } from "../utils";
+import { handleSocialSignin } from "@/lib/utils";
 import ForgotPasswordModal from "./ForgotPasswordModal"; 
 
 const LoginPage = () => {

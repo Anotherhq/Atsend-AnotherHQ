@@ -4,7 +4,7 @@ import { authClient } from "@/lib/auth-client";
 // import Turnstile from "react-turnstile";
 import { FaGoogle } from "react-icons/fa";
 import { useRouter } from "next/navigation";
-import { handleSocialSignin } from "../utils";
+import { handleSocialSignin } from "@/lib/utils";
 
 
 const RegisterPage = () => {

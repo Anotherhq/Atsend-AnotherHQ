@@ -36,6 +36,41 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'Bricolage Grotesque';
+  src: url('/fonts/outfit/Outfit-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Bricolage Grotesque';
+  src: url('/fonts/outfit/Outfit-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Bricolage Grotesque';
+  src: url('/fonts/outfit/Outfit-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Bricolage Grotesque';
+  src: url('/fonts/outfit/Outfit-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Bricolage Grotesque';
+  src: url('/fonts/outfit/Outfit-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
 :root {
   --ut-orange: #FF8811;
   --jasmine: #F4D06F;
@@ -62,6 +97,10 @@ body {
   overflow: hidden;
   min-height: 100vh;
   width: 100%;
+}
+
+.font-outfit {
+  font-family: 'Outfit', sans-serif;
 }
 
 .MAXWIDTH {
