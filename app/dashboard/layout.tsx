@@ -16,7 +16,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
       <div className="flex-1">
         {/* Page Content */}
         <Navbar />
-        <main className="p-6 rounded-tl-4xl overflow-hidden  bg-[#111111] h-full ">{children}</main>
+        <main className="p-6 rounded-tl-4xl overflow-hidden   bg-[#111111] h-full ">{children}</main>
       </div>
     </div>
   );
