@@ -5,15 +5,18 @@ import { useLandingPage } from '@/contexts/PageContext';
 const LandingPageEditor: React.FC = () => {
   const { config, updateConfig, resetConfig } = useLandingPage();
 
-  const handleImageUpload = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleImageUpload = async (e: ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        updateConfig({ logoUrl: reader.result as string });
-      };
-      reader.readAsDataURL(file);
-    }
+    // if (file) {
+    //   try {
+    //     // const imageUrl = await uploadImage(file);
+    //     // updateConfig({ logoUrl: imageUrl });
+    //     // alert(`Image uploaded successfully! URL: ${imageUrl}`);
+    //   } catch (error) {
+    //     alert('Failed to upload image. Please try again.');
+    //     console.error('Upload error:', error);
+    //   }
+    // }
   };
 
 
